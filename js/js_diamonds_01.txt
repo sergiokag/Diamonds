@@ -1,0 +1,3 @@
+console.log("  -9\n" - 5); 	// -14
+console.log("\t" + 10 );	// "	10"
+console.log(7/0)		// Infinity
