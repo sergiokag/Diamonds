@@ -1,0 +1,12 @@
+Html:
+
+1) 	Some elements are considered sectioning elements. They split a document into sections or chunks. One of these elements, of course, is the new section element. Other sectioning elements include body, 		article, aside, are nav as well. Here’s the tricky part: each sectioning element may contain its own header and footer. It’s a bit confusing, but the main point here is that a document may contain multiple header and footer elements.
+
+The article element is an example of sectioning content, which means it may contain a header and a footer.
+
+**
+	article element:
+
+"[R]epresents a complete, or self-contained, composition in a document, page, application, or site and that is, in principle, independently distributable or reusable, e.g. in syndication."
+
+Magazine articles and blog posts are obvious examples of when an article element would be semantically appropriate. But you could also use it for blog comments. This element is appropriate for any almost content item that could be reused.
