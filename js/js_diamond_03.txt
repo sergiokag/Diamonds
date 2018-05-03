@@ -1,0 +1,46 @@
+Javascript: 
+	1)	Not a real dictionary, but Unicode order
+		
+	A capital letter "A" is not equal to the lowercase "a". 
+	Which one is greater? 
+		Actually, the lowercase "a" is. 
+	Why? 
+		Because the lowercase character has a greater index in the internal encoding table (Unicode).
+
+	2)	OR seeks the first truthy value
+			
+		i)   Evaluate operands from left to right.
+		ii)  For each operand, convert it to boolean. If the result is true, then stop and return the original value of that operand.
+		iii) If all other operands have been assessed (i.e. all were false), return the last operand.
+		
+		example: 
+		0 || console.log(1 + 1) || 11 ----> returns 11, but before logs 2 (  console.log returns undefined  )
+
+	3)   Short-circuit evaluation.
+
+	Operands can be not only values, but arbitrary expressions. 
+	OR evaluates and tests them from left to right. The evaluation stops when a truthy value is reached, and the value is returned. 
+	The process is called “a short-circuit evaluation”, because it goes as short as possible from left to right.
+	
+	This is clearly seen when the expression given as the second argument has a side effect. Like a variable assignment.
+
+	If we run the example below, x would not get assigned:
+
+	let x;
+
+	true || (x = 1);
+
+	alert(x); // undefined, because (x = 1) not evaluated
+
+
+	4)     AND seeks the first falsy value
+		AND && executes before OR ||
+
+	5)     A double NOT !! is sometimes used for converting a value to boolean type // ----> 
+
+		alert( !!"non-empty string" ); // true
+		alert( !!null ); // false
+
+
+		That is, the first NOT converts the value to boolean and returns the inverse, and the second NOT inverses it again. 
+		At the end we have a plain value-to-boolean conversion.
