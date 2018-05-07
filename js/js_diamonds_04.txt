@@ -1,0 +1,39 @@
+Js
+	1) Breaking the loop: 
+		using the directive break;  -->  It stops the loop immediately, passing the control to the first line after the loop.
+
+	2) Continue to the next iteration: 
+		It doesn’t stop the whole loop. Instead it stops the current iteration and forces the loop to start a new one (if the condition allows).
+
+		example: 
+		
+		for (let i = 0; i < 10; i++) {
+
+		  // if true, skip the remaining part of the body
+		  if (i % 2 == 0) continue;
+
+		  alert(i); // 1, then 3, 5, 7, 9
+		}
+
+	3) Labels for break/continue
+		A label is an identifier with a colon before a loop:
+		
+		labelName: for (...) {
+ 			 ...
+		}
+
+		example:
+
+		outer: for (let i = 0; i < 3; i++) {
+
+  			for (let j = 0; j < 3; j++) {
+
+			    let input = prompt(`Value at coords (${i},${j})`, '');
+
+			    // if an empty string or canceled, then break out of both loops
+			    if (!input) break outer; // (*)
+
+			    // do something with the value...
+			  }
+		}
+		alert('Done!');		
