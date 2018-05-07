@@ -1,0 +1,12 @@
+Html:
+
+	1) The Multipurpose Internet Mail Extensions (MIME) type is a standardized way to indicate the nature and format of a document.
+
+	2) Syntax: type/subtype
+	    The structure of a MIME type is very simple; it consists of a type and a subtype, two strings, separated by a '/'. No space is allowed. 
+		
+	    The type represents the category and can be a discrete or a multipart type. The subtype is specific to each type.
+
+	     A MIME type is case-insensitive but traditionally is written all in lower case.
+
+	    text/plain,text/html,image/jpeg,image/png,audio/mpeg, audio/ogg,  audio/*, video/mp4, application/*, application/json, application/octet-stream
