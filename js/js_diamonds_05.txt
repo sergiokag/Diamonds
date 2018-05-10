@@ -36,3 +36,11 @@ The solution:
 	function() { alert("Greetings!"); };
 
 	welcome(); // ok now
+
+
+===========================================
+
+
+Notification for arrrow functions: 
+
+"Remember, when using an arrow function this is not bound to anything and it just inherits it from the parent scope"
