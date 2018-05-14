@@ -1,0 +1,41 @@
+Computed properties:
+
+1) We can use square brackets in an object literal.
+That’s called computed properties.
+
+######################
+ex1: 
+
+let fruit = prompt("Which fruit to buy?", "apple");
+
+let bag = {
+  [fruit]: 5, // the name of the property is taken from the variable fruit
+};
+
+alert( bag.apple ); // 5 if fruit="apple"
+########################
+
+The meaning of a computed property is simple: 
+[fruit] means that the property name should be taken from fruit.
+
+----
+
+2) Two objects are equal only if they are the same object.
+
+########################
+
+let a = {};
+let b = {}; // two independent objects
+
+alert( a == b ); // false
+
+########################
+
+3) Cloning and merging, Object.assign
+   To make a “real copy” (a clone) we can use Object.assign or _.cloneDeep(obj).
+
+4) Additional operators:
+
+-To delete a property: delete obj.prop.
+-To check if a property with the given key exists: "key" in obj.
+-To iterate over an object: for(let key in obj) loop.
