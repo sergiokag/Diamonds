@@ -1,0 +1,12 @@
+
+
+- Garbage collection is performed automatically. We cannot force or prevent it.
+  The basic garbage collection algorithm is called “mark-and-sweep”.
+
+- Objects are retained in memory while they are reachable.
+
+- Being referenced is not the same as being reachable (from a root): a pack of interlinked objects can become unreachable as a whole.
+
+Modern engines implement advanced algorithms of garbage collection.
+
+A general book “The Garbage Collection Handbook: The Art of Automatic Memory Management” (R. Jones et al) covers some of them.
