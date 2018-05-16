@@ -1,0 +1,55 @@
+# Symbol type
+
+By specification, object property keys may be either of string type, or of symbol type. 
+Not numbers, not booleans, only strings or symbols, these two types.
+
+## Symbols - “Hidden” properties
+
+“Symbol” value represents a unique identifier.
+
+Symbols allow us to create “hidden” properties of an object, 
+that no other part of code can occasionally access or overwrite.
+
+For instance:
+  
+  let user = { name: "John" };
+  let id = Symbol("id");
+  
+  user[id] = "ID Value";
+  alert( user[id] ); // we can access the data using the symbol as the key
+
+
+If we want to use a symbol in an object literal, we need square brackets.
+
+Like this:
+  
+  let id = Symbol('id');
+  
+  let user = {
+    name: "John",
+    [id]: 123 // not just "id: 123"
+  };
+
+## Symbols are skipped by for…in but when Object.assign,
+   they do deep copy.
+
+## Global Symbols
+  
+  As we’ve seen, usually all symbols are different, even if they have the same names. 
+  But sometimes we want same-named symbols to be same entities.
+
+  // read from the global registry
+  let id = Symbol.for("id"); // if the symbol did not exist, it is created
+
+  // read it again
+  let idAgain = Symbol.for("id");
+
+  // the same symbol
+  alert( id === idAgain ); // true
+
+###
+  Symbol.keyFor: 
+
+    The Symbol.keyFor internally uses the global symbol registry to look up the key for the symbol. 
+    So it doesn’t work for non-global symbols. 
+    If the symbol is not global, it won’t be able to find it and return undefined.
