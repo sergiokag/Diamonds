@@ -1,0 +1,44 @@
+# Object methods, "this"
+
+	## The value of this is the object “before dot”, the one used to call the method.
+	## The value of this is evaluated during the run-time. And it can be anything. ( When a function is declared, it may use this, but that this has no value until the function is called. )
+        -    The same function may have different “this” when called from different objects.
+        -    In JavaScript this is “free”, its value is evaluated at call-time and does not depend on where the method was declared, but rather on what’s the object “before the dot”.
+	This, is undefined when 'use strict' is on.
+
+===========================================
+
+# The following doesn't work: WHY?
+
+let user = {
+  name: "John",
+  hi() { alert(this.name); },
+  bye() { alert("Bye"); }
+};
+
+user.hi(); // John (the simple call works)
+
+// now let's call user.hi or user.bye depending on the name
+(user.name == "John" ? user.hi : user.bye)(); // Error!
+
+
+JavaScript uses a trick – the dot '.' returns not a function, but a value of the special Reference Type.
+
+
+The value of Reference Type is a three-value combination (base, name, strict), where:
+
+base is the object.
+name is the property.
+strict is true if use strict is in effect.
+
+The value of this is only passed the right way if the function 
+is called directly using a dot obj.method() or 
+square brackets obj[method]() syntax (they do the same here).
+
+Answer: http://javascript.info/object-methods#internals-reference-type
+
+===========================================
+
+Arrow functions have no “this”
+Arrow functions are special: they don’t have their “own” this. 
+If we reference this from such a function, it’s taken from the outer “normal” function.
