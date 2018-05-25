@@ -1,0 +1,57 @@
+Html:
+
+	Determining Whether the User Is Online --->
+
+		The window.navigator.onLine property tells us whether or not the user is connected to a network.
+		It returns a Boolean true or false value:
+
+		if(navigator.onLine){
+    			console.log('We are connected!');
+		} else {
+    			console.log('We don't have connectivity.');
+		}
+
+		We can use this property with other offline APIs to determine when and whether to store data locally. 
+		Then we can sync it with a server once we have connectivity again.
+
+
+		Anytime the value of navigator.onLine changes, it fires one of two events:
+
+			offline: when the value of navigator.onLine would be false
+			online: when the value of navigator.onLine would be true
+
+		We can listen for these events, of course, and take action when one is fired.
+
+====================================================================
+
+		In Firefox, Internet Explorer 9+, and Safari, the online and offline events are fired on the document.body object.
+		In Chrome and Opera 15+, however, they are fired on the window object.
+
+====================================================================
+
+		There are two options in listening for our online and offline events. 
+    We can use the event attributes onoffline and ononline, as shown here:
+
+		window.ononline = function(){
+		    // Alert the user that connectivity is back.
+		    // Or sync local data with server data.
+		 }
+ 
+		 window.onoffline = function(){
+		    // Alert the user that connectivity was lost.
+		    // Or just silently save data locally.
+ 		}
+		
+		Or we can use the addEventListener method and listen for the online or offline event:
+
+		window.addEventListener('offline', offlineHandler);
+		window.addEventListener('online', onlineHandler);
+
+=====================================================================
+
+Here’s the downside of navigator.onLine: it’s unreliable. 
+What’s more, it works differently depending on the browser and operating system.
+
+
+A better way to determine connectivity is to do it at the time of a network request.
+We can do this using XMLHttpRequest and its error and timeout events.
