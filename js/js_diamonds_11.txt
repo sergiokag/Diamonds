@@ -1,0 +1,51 @@
+Javascript:
+
+	JavaScript allows us to work with primitives (strings, numbers etc) as if they were objects.
+	They also provide methods to call and such. 
+	Let’s look at the key distinction between primitives and objects.
+
+	Objects are “heavier” than primitives. 
+	They require additional resources to support the internal machinery. 
+	But as properties and methods are very useful in programming, 
+	JavaScript engines try to optimize them to reduce the additional burden.
+
+	
+	#A primitive as an object
+		Here’s the paradox faced by the creator of JavaScript:
+
+		There are many things one would want to do with a primitive like a string or a number.
+		It would be great to access them as methods.
+		Primitives must be as fast and lightweight as possible.
+		The solution looks a little bit awkward, but here it is:
+
+		Primitives are still primitive. A single value, as desired.
+		The language allows access to methods and properties of strings, numbers, booleans and symbols.
+		When this happens, a special “object wrapper” is created that provides the extra functionality, and then is destroyed.
+		The “object wrappers” are different for each primitive type and are called: 
+			String, Number, Boolean and Symbol. Thus, they provide different sets of methods.
+
+		
+	The “object wrappers” are different for each primitive type and are called: 
+		String, Number, Boolean and Symbol. Thus, they provide different sets of methods.
+
+	For instance, there exists a method str.toUpperCase() that returns a capitalized string.
+
+	Here’s how it works:
+
+ 		let str = "Hello";
+		alert( str.toUpperCase() ); // HELLO
+
+	Simple, right? Here’s what actually happens in str.toUpperCase():
+
+	The string str is a primitive. So in the moment of accessing its property, 
+		a special object is created that knows the value of the string, 
+	and has useful methods, like toUpperCase().
+	That method runs and returns a new string (shown by alert).
+	The special object is destroyed, leaving the primitive str alone.
+	So primitives can provide methods, but they still remain lightweight.
+
+	The JavaScript engine highly optimizes this process. 
+	It may even skip the creation of the extra object at all. 
+	But it must still adhere to the specification and behave as if it creates one.
+
+	
