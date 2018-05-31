@@ -1,0 +1,40 @@
+Web Storage:
+	
+	Web storage (also known as DOM storage) is a simple client-side, 
+	key-value system that lets us store data in the client. 
+	It consists of two parts: localStorage and sessionStorage.
+
+	The main difference between localStorage and sessionStorage is persistence.
+	Data stored using localStorage persists from session to session. 
+	It’s available until the user or the application deletes it.
+
+	Data stored using sessionStorage, on the other hand, persists only as long as the browsing context is available.
+	Usually this means that we lose our sessionStorage data once the user closes the browser 
+	window or tab. It may, however, persist in browsers that allow users to save browsing sessions.
+
+
+#Why Use Web Storage Instead of Cookies?
+
+	There are three main reasons to use localStorage or sessionStorage over cookies:
+		1) HTTP request performance
+		2) data storage capacity
+		3) better protection against cross-site scripting attacks
+
+
+Cookies are included with each request to the server, 
+increasing the size and duration of each request. 
+Using smaller cookies helps, but using localStorage and sessionStorage helps most of all. 
+Data is stored locally, and sent only when requested.
+
+Another advantage of using web storage is that you can store much more data.
+
+Finally, web storage is less vulnerable to cross-site scripting attacks than cookies. 
+Cookies adhere to a same-domain policy. 
+A cookie set for .example.com can be read or overwritten by any subdomain of example.com, 
+including hackedsubdomain.example.com. 
+If sensitivedata.example.com also uses the .example.com cookie,
+a script at hackedsubdomain.example.com can intercept that data.
+
+A same-origin restriction means that only the origin that created the data can access the data.
+Data written to localStorage by http://api.example.com will not be available to http://example.com,
+http://store.example.com, https://example.com, or even http://api.example.com:80.
