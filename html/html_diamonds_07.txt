@@ -1,0 +1,27 @@
+#Testing for Web Storage Support
+
+Both localStorage and sessionStorage are attributes of the window object. 
+We can test for browser support by testing whether these attributes are undefined:
+
+	if( typeof window.localStorage == 'undefined' ){
+    		// Use something other than localStorage.
+	} else {
+    		// Save a key-value pair.   
+	}
+
+Testing for sessionStorage works similarly; use typeof window.sessionStorage == 'undefined' instead. 
+Typically, though, if a browser supports localStorage it also supports sessionStorage, and vice versa.
+
+
+#To add an item to local storage or session storage, we need to use the setItem method. 
+This method accepts two arguments: 
+	key and value, in that order. 
+
+Both arguments must be strings, or be converted to strings:
+
+localStorage.setItem(keyname, value);
+
+#Retrieving Values With localStorage.getItem()
+
+To retrieve the value of a key, we use localStorage.getItem(). 
+This method accepts one argument, the key of the value we’d like to retrieve, which must be a string.
