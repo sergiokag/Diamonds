@@ -1,0 +1,31 @@
+# Strings
+
+	In JavaScript, the textual data is stored as strings.
+	There is no separate type for a single character.
+
+	The internal format for strings is always UTF-16, 
+	it is not tied to the page encoding.
+
+	## Special characters
+		\b	Backspace
+		\f	Form feed
+		\n	New line
+		\r	Carriage return
+		\t	Tab
+	
+	## String length
+		console.log( `My\n`.length );  // 3
+		
+		Note that \n is a single “special” character,
+		so the length is indeed 3.
+
+	To get a character, use: [].
+	To get a substring, use: slice or substring.
+	To lowercase/uppercase a string, use: toLowerCase/toUpperCase.
+	To look for a substring, use: indexOf, or includes/startsWith/endsWith for simple checks.
+	To compare strings according to the language, use:
+		 localeCompare, otherwise they are compared by character codes.
+	There are several other helpful methods in strings:
+
+	str.trim() – removes (“trims”) spaces from the beginning and end of the string.
+	str.repeat(n) – repeats the string n times.
