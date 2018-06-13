@@ -1,0 +1,22 @@
+On page reload, our list of to-dos will be blank.
+They’ll still be available in localStorage, but not part of the DOM tree.
+To fix this, we’ll have to rebuild our to-do list by iterating over our collection of localStorage items, 
+preferably when the page loads. 
+This is where localStorage.key() and localStorage.length come in handy.
+
+localStorage.length tells us how many items are available in our storage area.
+The key() method retrieves the key name for an item at a given index.
+It accepts one argument: an integer value that’s greater or equal to 0 and less than the value of length.
+If the argument is less than zero, or greater than equal to length, localStorage.key() will return null.
+
+Indexes and keys have a very loose relationship. 
+Each browser orders its keys differently.
+What’s more, the key and value at a given index will change as items are added or removed. 
+To retrieve a particular value, key() is a bad choice.
+But for looping over entries, it’s perfect. An example follows:
+
+	var i = localStorage.length, key;
+		while( i-- ){ 
+		key = localStorage.key(i);
+		console.log( localStorage.getItem(key) );
+	}
