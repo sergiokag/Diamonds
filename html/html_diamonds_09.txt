@@ -1,0 +1,88 @@
+# Clearing the Storage Area With localStorage.clear()
+
+	To clear the storage area completely,
+	use the localStorage.clear() method.
+	It doesn't accept any parameters:
+
+	ex1:
+		function clearAll() {
+			list.innerHTML = '';
+			localStorage.clear();
+		}
+
+	Once called, it will remove all keys and their values
+	from the storage area.
+	
+	Once removed, these values are no longer available
+	to the application. Use it carefully.
+
+# Storage Events
+
+	Storage events are fired on the window object whenever the storage area changes. 
+	This happens when removeItem() or clear() deletes an item (or items). 
+	It also happens when setItem() sets a new value or changes an existing one.
+
+	## Listening for the Storage Event
+	
+	To listen for the storage event, add an event listener to the window object:
+	
+	window.addEventListener( 'storage', storagehandler );
+
+	Our storagehandler function that will be invoked when storage event is fired.
+	We’re yet to define that function―we’ll deal with that in a moment.
+	First, let’s take a look at the StorageEvent object.
+
+# The StorageEvent Object
+
+	Our callback function will receive a StorageEvent object as its argument. 
+	The StorageEvent object contains properties that are universal to all objects,
+	and five that are specific to its type:
+
+		-key: contains the key name saved to the storage area
+
+		-oldValue: contains the former value of the key, 
+			or null if this is the first time an item with that key has been set
+
+		-newValue: contains the new value added during the operation
+
+		-url: contains the URL of the page that made this change
+
+	storageArea: indicates the storage object affected by the 
+			update―either localStorage or sessionsStorage
+
+	With these properties, you can update the interface or alert the user
+	about the status of an action. In this case,
+	we’ll just quietly reload the page in other tabs/windows using location.reload().
+
+	function storagehandler(event){
+	    location.reload();
+	}
+	Now our list is up-to-date in all tabs.
+
+	
+# Storage Events Across Browsers
+	
+	Storage events are a bit tricky, and work differently to how
+	you might expect in most browsers. Rather than being fired on the
+	current window or tab, the storage event is supposed to be fired in other
+	windows and tabs that share the same storage area. Let’s say that our user has 			http://ourexamplesite.com/buy-a-ticket open in two tabs.
+	If they take an action in the first tab that updates the storage area, the storage event 	should be fired in the second.
+
+	Chrome, Firefox, Opera, and Safari are in line with the
+	web storage specification, while Internet Explorer is not. Instead,
+	Internet Explorer fires the storage event in every window for every change, including the current window.
+
+	There isn’t a good hack-free way to work around this issue. For now, reloading the application―as we’ve done above―is the best option across browsers.
+
+
+# Determining Which Method Caused the Storage Event
+
+	There isn’t an easy way to determine which method out of setItem(), 
+	removeItem(), or clear() triggered the storage event. 
+	But there is a way: examine the event properties.
+
+	If the storage event was caused by invoking 
+	localStorage.clear(), the key, oldValue, and newValue properties
+	of that object will all be null. If removeItem() was the trigger, 
+	oldValue will match the removed value and the newValue property will be null.
+	If newValue isn’t null, it’s a safe bet that setItem() was the method invoked.
