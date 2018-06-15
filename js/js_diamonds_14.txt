@@ -1,0 +1,65 @@
+# Arrays
+
+	let arr = new Array();
+	let arr = [];
+
+	## Methods pop/push, shift/unshift
+	
+	push --> appends an element to the end.
+	shift  --> get and element from the beginning,
+		      advancing the queue, so that the 2nd
+		      becomes the 1st.
+
+	pop   --> takes an element from the end.
+	unshift --> Add the element to the beginning of the array.
+	
+	What makes arrays really special is their internal representation. 
+	The engine tries to store its elements in the contiguous memory area,
+	one after another, just 
+	as depicted on the illustrations in this chapter, and there are other optimizations as well,
+	to make arrays work really fast.
+	
+	But they all break if we quit working with an array as with
+	an “ordered collection” and start working with it as if it were a regular object.
+	
+	
+	## Performance
+	
+	Methods push/pop run fast, while shift/unshift are slow.
+
+	The shift operation must do 3 things:
+
+		-Remove the element with the index 0.
+		-Move all elements to the left, renumber them from the index 1 to 0,
+			from 2 to 1 and so on.
+		-Update the length property.
+
+		The more elements in the array,
+		the more time to move them, more in-memory operations.
+
+	And what’s with push/pop? 
+	They do not need to move anything. 
+	To extract an element from the end, the pop method cleans the index and shortens length.
+
+	The pop method does not need to move anything, 
+	because other elements keep their indexes. That’s why it’s blazingly fast.
+
+
+	## A word about "length"
+	
+	The length property automatically updates when we modify the array.
+	To be precise, it is actually not the count of values in the array,
+	but the greatest numeric index plus one.
+
+	
+	Another interesting thing about the length property is that it’s writable.
+	If we increase it manually, nothing interesting happens.
+	But if we decrease it, the array is truncated.
+
+
+	alert( [] + 1 ); // "1"
+	alert( [1] + 1 ); // "11"
+	alert( [1,2] + 1 ); // "1,21"
+	Arrays do not have Symbol.toPrimitive, neither a viable valueOf,
+	they implement only toString conversion, so here [] becomes an empty string,
+	[1] becomes "1" and [1,2] becomes "1,2".
