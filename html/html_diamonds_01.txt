@@ -17,5 +17,5 @@ Html:
     	HTML5 can also be written using a stricter, XML-like syntax.
 
 	XHTML5 is best understood as HTML5 that’s written and parsed using the syntax rules of XML and served with a Content-type: application/xml+xhtml response header.
-
+	-- must read: https://webkit.org/blog/68/understanding-html-xml-and-xhtml/
 	-- mark: https://www.sitepoint.com/premium/books/jump-start-html5/online/ch02s02.html
