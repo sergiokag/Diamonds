@@ -1,0 +1,44 @@
+Storing Arrays and Objects
+
+As mentioned earlier in this chapter, web storage keys and arrays must be strings.
+If you try to save objects or arrays, the browser will convert them to strings. 
+This can lead to unexpected results. First, let’s take a look at saving an array:
+
+<code>
+var arrayOfAnimals = ['cat','dog','hamster','mouse','frog','rabbit'];
+
+localStorage.setItem('animals', arrayOfAnimals);
+
+console.log(localStorage.animals[0])
+</code>
+
+But if you try to read the first item of that array, 
+you’ll see that the first item is the letter C and not cat as in our array. 
+Instead, it’s been converted to a comma-separated string.
+
+Similarly, when an object is converted to a string, it becomes [object Object]. 
+
+To prevent this from happening, use the native JSON.stringify() 
+method to turn your objects and arrays into strings before saving:
+
+<code>
+var foodcouples = {
+  'ham':'cheese',
+  'peanut_butter':'jelly',
+  'eggs':'toast'
+}
+
+localStorage.setItem(
+  'foodpairs_string',
+  JSON.stringify(foodcouples)
+);
+</code>
+
+Using JSON.stringify() will serialize arrays and objects. 
+They’ll be converted to specially formatted strings that hold 
+indexes or properties and values.
+
+To retrieve these values, use JSON.parse() to turn it back 
+into a JavaScript object or array. A word of caution: JSON.parse() and JSON.stringify() 
+can affect the performance of your application. Use them sparingly, 
+especially when getting and setting items.
