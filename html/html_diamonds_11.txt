@@ -1,0 +1,34 @@
+# Limitations of Web Storage
+
+Web storage comes with a couple of limitations: performance and capacity.
+
+Web storage is synchronous. Reads and writes are added to the JavaScript processing
+queue immediately.
+Other tasks in the queue won't be completed until the engine 
+is done writing to or reading from the storage area.
+For small chunks of data, this usually is no issue.
+
+But for larger chunks of data or a large number of write operations, it will be.
+
+Web storage also has a size limit. 
+Should your application reach that limit, the browser will throw a DOMException error.
+Use a try-catch statement to catch and handle this error.
+In browsers that support it,
+you can also use window.onerror (or use addEventListener and the error event):
+
+<code>
+  try {
+      localStorage.setItem('keyname',value);
+      return true;
+  } catch (error) {
+      // Could alternatively update the UI.
+      console.log(error.message); 
+  }
+</code>
+
+Size limits vary by browser and version. 
+The web storage specification suggests an initial size of 5MB per origin.
+However, Safari, currently allows 2.5MB of data to be stored per origin.
+Chrome, Internet Explorer, and Opera 15+ currently store 5MB of data.
+Firefox stores 5MB by default, but the user can adjust this limit in the about:config menu.
+Older versions of Opera (12 and below) prompt the user to raise the storage limit.
